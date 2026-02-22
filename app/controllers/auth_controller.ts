@@ -20,7 +20,7 @@ export default class AuthController {
         try {
             const user = await User.verifyCredentials(email, password)
             await auth.use('web').login(user)
-            return response.redirect('/')
+            return response.redirect('/dashboard')
         } catch (e) {
             session.flash('errors', { message: "Invalid email or password" })
             return response.redirect('/login')

@@ -1,15 +1,14 @@
-import Header from "~/components/Header";
-import Main from "~/components/Main";
-import Footer from "~/components/FooterNav";
+import Main from '~/components/Main'
+import MainLayout from '~/Layouts/mainLayout'
 
-export default function App() {
+interface AppProps {
+  devices: { id: number; label: string }[]
+}
+
+export default function App({ devices }: AppProps) {
   return (
-    <div className="bg-gray-100 h-screen flex flex-col max-w-sm mx-auto">
-      <div className="bg-gray-200 min-h-screen flex flex-col shadow-lg overflow-hidden">
-        <Header />
-        <Main />
-        <Footer />
-      </div>
-    </div>
-  );
+    <MainLayout title="Dashboard">
+      <Main devices={devices} />
+    </MainLayout>
+  )
 }

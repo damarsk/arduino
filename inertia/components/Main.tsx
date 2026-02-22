@@ -1,20 +1,23 @@
-import DeviceCard from "./DeviceCard";
+import DeviceCard from './DeviceCard'
 
-const devices = [
-  { deviceId: "lampu1", label: "Lampu Ruang Tamu" },
-  // tambah device lain di sini nanti
-];
+interface MainProps {
+  devices: { id: number; deviceName: string }[]
+}
 
-export default function Main() {
+export default function Main({ devices }: MainProps) {
+  if (devices.length === 0) {
+    return (
+      <div className="flex items-center justify-center">
+        <p className="text-gray-500 text-lg">No devices available</p>
+      </div>
+    )
+  }
+
   return (
-    <main className="flex-1 overflow-y-auto p-4 space-y-4">
+    <>
       {devices.map((device) => (
-        <DeviceCard
-          key={device.deviceId}
-          deviceId={device.deviceId}
-          label={device.label}
-        />
+        <DeviceCard key={device.id} label={device.deviceName} />
       ))}
-    </main>
-  );
+    </>
+  )
 }

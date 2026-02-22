@@ -24,7 +24,7 @@ export default function Login() {
   return (
     <>
       <Head title="Login" />
-      <div className="bg-gray-100 h-screen flex flex-col max-w-sm mx-auto justify-center p-6">
+      <div className="h-screen flex flex-col max-w-screen-sm mx-auto justify-center p-6">
         <h1 className="text-2xl font-bold text-center mb-6 text-blue-600">House Control</h1>
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-6 space-y-4">
           <div>

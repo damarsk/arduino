@@ -1,7 +1,9 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import Device from '#models/device'
 
 export default class DashboardController {
     async index({ inertia }: HttpContext) {
-        return inertia.render('Home/App')
+        const devices = await Device.all()
+        return inertia.render('Home/App', { devices })
     }
 }

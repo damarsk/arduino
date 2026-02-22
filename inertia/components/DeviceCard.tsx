@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 interface DeviceCardProps {
-    deviceId: string;
-    label: string;
-    icon?: React.ReactNode;
+  label: string
 }
 
-export default function DeviceCard({ deviceId, label, icon }: DeviceCardProps) {
-  const [isOn, setIsOn] = useState(false);
+export default function DeviceCard({ label }: DeviceCardProps) {
+  const [isOn, setIsOn] = useState(false)
 
-  const toggle = () => setIsOn(!isOn);
+  const toggle = () => setIsOn(!isOn)
 
   return (
     <div
@@ -18,7 +16,7 @@ export default function DeviceCard({ deviceId, label, icon }: DeviceCardProps) {
     >
       <div className="flex items-center gap-4">
         <svg
-          className={`light w-14 h-14 ${isOn ? "text-yellow-400" : "text-gray-800"}`}
+          className={`light w-14 h-14 ${isOn ? 'text-yellow-400' : 'text-gray-800'}`}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -31,14 +29,14 @@ export default function DeviceCard({ deviceId, label, icon }: DeviceCardProps) {
         </svg>
         <div>
           <h2 className="font-semibold text-lg">{label}</h2>
-          <p className={`status ${isOn ? "text-green-500" : "text-gray-500"}`}>
-            {isOn ? "ON" : "OFF"}
+          <p className={`status ${isOn ? 'text-green-500' : 'text-gray-500'}`}>
+            {isOn ? 'ON' : 'OFF'}
           </p>
         </div>
       </div>
       <div
-        className={`indicator w-5 h-5 rounded-full ${isOn ? "bg-green-500" : "bg-gray-400"}`}
+        className={`indicator w-5 h-5 rounded-full ${isOn ? 'bg-green-500' : 'bg-gray-400'}`}
       />
     </div>
-  );
+  )
 }
