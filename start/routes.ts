@@ -14,6 +14,7 @@ const AuthController = () => import('#controllers/auth_controller')
 const DashboardController = () => import('#controllers/dashboard_controller')
 const DevicesController = () => import('#controllers/devices_controller')
 
+router.get('/', async ({ response }) => response.redirect('/dashboard'))
 router.group(() => {
   router.get('/login', [AuthController, 'loginPage'])
   router.post('/login', [AuthController, 'login'])
@@ -23,5 +24,6 @@ router.group(() => {
   router.get('/dashboard', [DashboardController, 'index'])
   router.get('/devices/create', [DevicesController, 'index'])
   router.post('/devices/create', [DevicesController, 'create'])
+  router.post('/devices/delete', [DevicesController, 'delete'])
   router.post('/logout', [AuthController, 'logout'])
 }).use(middleware.auth())

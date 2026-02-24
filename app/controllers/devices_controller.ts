@@ -9,7 +9,6 @@ export default class DevicesController {
 
     async create({ request, response }: HttpContext) {
         const { deviceName, type, endpoint } = request.only(['deviceName', 'type', 'endpoint'])
-        // Validator
         const createDeviceValidator = vine.compile(
             vine.object({
                 deviceName: vine.string().minLength(3),
@@ -26,6 +25,19 @@ export default class DevicesController {
             endpoint
         })
 
+        return response.redirect('/dashboard')
+    }
+
+    async delete({ request, response }: HttpContext) {
+        const { id } = request.only(['id'])
+        const deleteDeviceValidator = vine.compile(
+            vine.object({
+                id: vine.number()
+            })
+        )
+
+        await request.validateUsing(deleteDeviceValidator)
+        await Device.query().where('id', id).delete()
         return response.redirect('/dashboard')
     }
 }
